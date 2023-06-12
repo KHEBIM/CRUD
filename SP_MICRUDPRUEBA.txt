@@ -1,0 +1,54 @@
+CREAR==========================================================================
+===============================================================================
+CREATE PROCEDURE SP_InsertarUsuario
+@Nombre NVARCHAR(50),
+@Apellido NVARCHAR(50),
+@Edad INT,
+@Sexo NVARCHAR(20),
+@FechaNa DATETIME
+AS
+BEGIN
+INSERT INTO Usuario(Nombre, Apellido, Edad, Sexo, FechaNa)
+VALUES(@Nombre, @Apellido, @Edad, @Sexo, @FechaNa)
+END
+
+EXEC SP_InsertarUsuario 'Kevin', 'Morales', 21, 'Masculino', '07-21-2001'
+
+LISTAR===========================================================================
+=================================================================================
+CREATE PROCEDURE SP_ListarUsuarios
+AS
+BEGIN
+SELECT * FROM Usuario
+END 
+
+EXEC SP_ListarUsuarios
+
+ACTUALIZAR========================================================================
+==================================================================================
+CREATE PROCEDURE SP_ActualizarUsuario
+@id INT,
+@Nombre NVARCHAR(50),
+@Apellido NVARCHAR(50),
+@Edad INT,
+@Sexo NVARCHAR(20),
+@FechaNa DATETIME
+AS
+BEGIN
+UPDATE Usuario SET Nombre = @Nombre, Apellido= @Apellido, Edad=@Edad, Sexo=@Sexo, FechaNa=@FechaNa
+WHERE Id = @id
+END
+
+ELIMINAR===========================================================================
+===================================================================================
+CREATE PROCEDURE SP_EliminarUsuario
+@id INT
+AS
+BEGIN
+DELETE Usuario WHERE Id = @id
+END
+
+
+-ir a propiedades del data grid view, fijarse que el rowHeaderVisible esté False
+-ir a propiedades del data grid view, fijarse que el selectionMode esté FullRowSelect
+"USUARIO"
